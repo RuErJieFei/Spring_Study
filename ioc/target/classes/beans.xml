@@ -29,4 +29,15 @@
     <bean id="userLogin" class="com.soft1851.spring.ioc.entity.UserLogin">
         <property name="user" ref="user"/>
     </bean>
+
+    <bean id="hobbies" class="com.soft1851.spring.ioc.entity.Hobbies">
+        <property name="hobbies">
+            <list>
+                <value>吃</value>
+                <value>喝</value>
+                <value>玩</value>
+                <value>乐</value>
+            </list>
+        </property>
+    </bean>
 </beans>

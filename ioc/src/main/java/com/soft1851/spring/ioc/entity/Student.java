@@ -1,5 +1,7 @@
 package com.soft1851.spring.ioc.entity;
 
+import java.awt.*;
+
 /**
  * @ClassName Student
  * @Description TODO
