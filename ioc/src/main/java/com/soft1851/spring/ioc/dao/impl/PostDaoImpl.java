@@ -21,6 +21,7 @@ import java.util.List;
  **/
 @Repository
 public class PostDaoImpl implements PostDao {
+
     private final JdbcTemplate jdbcTemplate;
 
     public PostDaoImpl(JdbcTemplate jdbcTemplate) {
@@ -63,9 +64,26 @@ public class PostDaoImpl implements PostDao {
     }
 
     @Override
+    public int[] batchDelete(List<Post> posts) {
+        final List<Post> postList = posts;
+        String sql = "DELETE FROM t_post WHERE post_id=?";
+        return jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                preparedStatement.setLong(1, postList.get(i).getPostId());
+            }
+
+            @Override
+            public int getBatchSize() {
+                return postList.size();
+            }
+        });
+    }
+
+    @Override
     public int update(Post post) {
         String sql = "UPDATE t_post SET forum_id = ? , title = ? , content = ? , thumbnail = ? , post_time = ? WHERE post_id = ?";
-        Object[] args = {post.getForumId(),post.getTitle(), post.getContent(), post.getThumbnail(), post.getPostTime(), post.getPostId()};
+        Object[] args = {post.getForumId(), post.getTitle(), post.getContent(), post.getThumbnail(), post.getPostTime(), post.getPostId()};
         return jdbcTemplate.update(sql, args);
     }
 
@@ -79,6 +97,25 @@ public class PostDaoImpl implements PostDao {
     @Override
     public List<Post> selectAll() {
         String sql = "SELECT * FROM t_post";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Post.class));
+    }
+
+    @Override
+    public int count() {
+        String sql = "SELECT COUNT(*) FROM t_post";
+        return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
+    @Override
+    public List<Post> selectByKey(String key) {
+        String sql = "select * from t_post where " +
+                "title like '%" + key + "%' " +
+                "or content like '%" + key + "%' " +
+                "or thumbnail like '%" + key + "%' ";
+//        String sql = "select * from t_post where " +
+//                "title like CONCAT('%', ?, '%') " +
+//                "or content like CONCAT('%', ?, '%') " +
+//                "or thumbnail like CONCAT('%', ?, '%') ";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Post.class));
     }
 }

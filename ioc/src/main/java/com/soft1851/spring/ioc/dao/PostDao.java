@@ -37,6 +37,14 @@ public interface PostDao {
     int delete(int postId);
 
     /**
+     * 根据id批量删除Post
+     *
+     * @param posts
+     * @return
+     */
+    int[] batchDelete(List<Post> posts);
+
+    /**
      * 修改Post
      *
      * @param post
@@ -58,4 +66,13 @@ public interface PostDao {
      * @return
      */
     List<Post> selectAll();
+
+    /**
+     * 查询所有帖子的总数
+     *
+     * @return
+     */
+    int count();
+
+    List<Post> selectByKey(String key);
 }

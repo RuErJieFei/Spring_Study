@@ -75,4 +75,15 @@ public class PostDaoImplTest {
         List<Post> postList = postDao.selectAll();
         postList.forEach(System.out::println);
     }
+
+    @Test
+    public void count() {
+        int n = postDao.count();
+        System.out.println(n);
+    }
+
+    @Test
+    public void selectByKey() {
+        postDao.selectByKey("1").forEach(System.out::print);
+    }
 }
