@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="com.soft1851.spring.ioc.entity.Hello"/>
+
+    <bean id="phone" class="com.soft1851.spring.ioc.entity.Phone">
+        <constructor-arg name="brand" value="iPhone11"/>
+        <constructor-arg name="price" value="888"/>
+    </bean>
+
+    <bean id="phone1" class="com.soft1851.spring.ioc.entity.Phone">
+        <constructor-arg name="brand" value="iPhone11"/>
+        <constructor-arg name="price" value="888"/>
+    </bean>
+
+    <bean id="student" class="com.soft1851.spring.ioc.entity.Student">
+        <property name="name" value="杨阳"/>
+        <property name="phone" ref="phone"/>
+    </bean>
+
+    <bean id="user" class="com.soft1851.spring.ioc.entity.User">
+        <constructor-arg name="account" value="admin"/>
+        <constructor-arg name="password" value="111"/>
+    </bean>
+
+
+    <bean id="userLogin" class="com.soft1851.spring.ioc.entity.UserLogin">
+        <property name="user" ref="user"/>
+    </bean>
+</beans>
