@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.soft1851.spring.ioc.config"/>
 
     <bean id="hello" class="com.soft1851.spring.ioc.entity.Hello"/>
+
 
     <bean id="phone" class="com.soft1851.spring.ioc.entity.Phone">
         <constructor-arg name="brand" value="iPhone11"/>
@@ -17,6 +18,9 @@
         <constructor-arg name="brand" value="iPhone11"/>
         <constructor-arg name="price" value="888"/>
     </bean>
+
+    <bean id="student2" class="com.soft1851.spring.ioc.entity.Student"
+          p:name="value" p:phone-ref="phone"/>
 
     <bean id="student" class="com.soft1851.spring.ioc.entity.Student">
         <property name="name" value="杨阳"/>
@@ -47,6 +51,20 @@
             <list>
                 <ref bean="phone"></ref>
             </list>
+        </property>
+
+        <property name="likeToDo">
+            <map>
+                <entry key-ref="student" value="踢足球"/>
+                <entry key-ref="student2" value="踢打篮球"/>
+            </map>
+        </property>
+
+        <property name="students">
+            <set>
+                <ref bean="student"/>
+                <ref bean="student2"/>
+            </set>
         </property>
     </bean>
 

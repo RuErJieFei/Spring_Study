@@ -1,6 +1,8 @@
 package com.soft1851.spring.ioc.entity;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @ClassName Hobbies
@@ -12,6 +14,16 @@ import java.util.List;
 public class Hobbies {
     private List<String> hobbies;
     private List<Phone> phones;
+    private Map<Student, String> likeToDo;
+    private Set<Student> students;
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 
     public List<String> getHobbies() {
         return hobbies;
@@ -29,4 +41,11 @@ public class Hobbies {
         this.phones = phone;
     }
 
+    public Map<Student, String> getLikeToDo() {
+        return likeToDo;
+    }
+
+    public void setLikeToDo(Map<Student, String> likeToDo) {
+        this.likeToDo = likeToDo;
+    }
 }
