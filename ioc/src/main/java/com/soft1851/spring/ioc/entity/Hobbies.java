@@ -11,12 +11,22 @@ import java.util.List;
  **/
 public class Hobbies {
     private List<String> hobbies;
+    private List<Phone> phones;
+
+    public List<String> getHobbies() {
+        return hobbies;
+    }
 
     public void setHobbies(List<String> hobbies) {
         this.hobbies = hobbies;
     }
 
-    public List<String> getHobbies() {
-        return hobbies;
+    public List<Phone> getPhones() {
+        return phones;
     }
+
+    public void setPhones(List<Phone> phone) {
+        this.phones = phone;
+    }
+
 }

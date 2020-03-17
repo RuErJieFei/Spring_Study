@@ -15,5 +15,6 @@ public class HobbiesTest {
     @Test
     public void setHobbies(){
         System.out.println(hobbies.getHobbies());
+        System.out.println(hobbies.getPhones());
     }
 }
