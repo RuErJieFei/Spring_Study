@@ -5,6 +5,7 @@ import com.soft1851.spring.ioc.entity.Forum;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -20,9 +21,17 @@ import java.util.List;
  **/
 @Repository
 public class ForumDaoImpl implements ForumDao {
-    private final JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
+
+//    public ForumDaoImpl(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//    }
 
     public ForumDaoImpl(JdbcTemplate jdbcTemplate) {
+        this.setJdbcTemplate(jdbcTemplate);
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

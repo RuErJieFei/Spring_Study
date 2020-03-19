@@ -20,7 +20,7 @@
     </bean>
 
     <bean id="student2" class="com.soft1851.spring.ioc.entity.Student"
-          p:name="value" p:phone-ref="phone"/>
+          p:name="value" p:phone-ref="phone" />
 
     <bean id="student" class="com.soft1851.spring.ioc.entity.Student">
         <property name="name" value="杨阳"/>

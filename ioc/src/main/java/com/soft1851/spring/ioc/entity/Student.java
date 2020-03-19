@@ -1,6 +1,12 @@
 package com.soft1851.spring.ioc.entity;
 
-import java.awt.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName Student
@@ -9,39 +15,13 @@ import java.awt.*;
  * @Date 2020/3/12 10:43 上午
  * @Version 1.0
  **/
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Student {
     private String name;
     private Phone phone;
-
-    public Student(String name, Phone phone) {
-        this.name = name;
-        this.phone = phone;
-    }
-
-    public Student() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Phone phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", phone=" + phone +
-                '}';
-    }
+    private List<Phone> phones;
+    private Map<String, String> contact;
 }

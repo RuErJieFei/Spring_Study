@@ -1,5 +1,6 @@
 package com.soft1851.spring.ioc.dao.impl;
 
+import com.soft1851.spring.ioc.config.DataSourceConfig;
 import com.soft1851.spring.ioc.dao.ForumDao;
 import com.soft1851.spring.ioc.entity.Forum;
 import org.junit.Test;
@@ -16,7 +17,8 @@ import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/applicationContext.xml"})
+//@ContextConfiguration(locations = {"/applicationContext.xml"})
+@ContextConfiguration(classes = {DataSourceConfig.class})
 public class ForumDaoImplTest {
 
     @Autowired
