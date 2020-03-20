@@ -26,7 +26,7 @@ public class AppConfig {
 //生成基于注解配置的应用上下文对象
 AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 //手动开启扫包
-ctx.scan("com.soft1851.spring.ioc.config");
+ctx.scan("com.soft1851.spring.orm.config");
 ctx.refresh();
 Book book = (Book) ctx.getBean("book");
 book.setName("java");
@@ -134,3 +134,11 @@ System.out.println(book)
 - ForumDaoImpl中的@Repository或者@Component注解
 - SpringDataSourceConfigTest中的@ContextConfiguration(classes = {SpringDataSourceConfig.class})注解
 
+## 实现XML配置版Spring MVC
+* ### 由于一开始建立项目不是基于maven项目的
+
+  ### 所以web文件夹目录跟src同级，所以导致监听器无法找到
+
+* ### 在测试借口时候注解的用法要注意
+
+* ### 字符设置（虽然老师帮忙基本解决了）

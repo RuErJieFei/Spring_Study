@@ -4,40 +4,40 @@
        xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.soft1851.spring.ioc.config"/>
+    <context:component-scan base-package="com.soft1851.spring.orm.config"/>
 
-    <bean id="hello" class="com.soft1851.spring.ioc.entity.Hello"/>
+    <bean id="hello" class="com.soft1851.spring.orm.entity.Hello"/>
 
 
-    <bean id="phone" class="com.soft1851.spring.ioc.entity.Phone">
+    <bean id="phone" class="com.soft1851.spring.orm.entity.Phone">
         <constructor-arg name="brand" value="iPhone11"/>
         <constructor-arg name="price" value="888"/>
     </bean>
 
-    <bean id="phone1" class="com.soft1851.spring.ioc.entity.Phone">
+    <bean id="phone1" class="com.soft1851.spring.orm.entity.Phone">
         <constructor-arg name="brand" value="iPhone11"/>
         <constructor-arg name="price" value="888"/>
     </bean>
 
-    <bean id="student2" class="com.soft1851.spring.ioc.entity.Student"
+    <bean id="student2" class="com.soft1851.spring.orm.entity.Student"
           p:name="value" p:phone-ref="phone" />
 
-    <bean id="student" class="com.soft1851.spring.ioc.entity.Student">
+    <bean id="student" class="com.soft1851.spring.orm.entity.Student">
         <property name="name" value="杨阳"/>
         <property name="phone" ref="phone"/>
     </bean>
 
-    <bean id="user" class="com.soft1851.spring.ioc.entity.User">
+    <bean id="user" class="com.soft1851.spring.orm.entity.User">
         <constructor-arg name="account" value="admin"/>
         <constructor-arg name="password" value="111"/>
     </bean>
 
 
-    <bean id="userLogin" class="com.soft1851.spring.ioc.entity.UserLogin">
+    <bean id="userLogin" class="com.soft1851.spring.orm.entity.UserLogin">
         <property name="user" ref="user"/>
     </bean>
 
-    <bean id="hobbies" class="com.soft1851.spring.ioc.entity.Hobbies">
+    <bean id="hobbies" class="com.soft1851.spring.orm.entity.Hobbies">
         <property name="hobbies">
             <list>
                 <value>吃</value>
