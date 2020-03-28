@@ -1,0 +1,91 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer"/>
+    <title>Topic</title>
+    <style>
+        .container {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1080px;
+            font-size: 12px;
+            line-height: normal;
+        }
+
+        .topic-list {
+            display: flex;
+            flex-direction: row;
+            /*max-width: 920px;*/
+            flex-wrap: wrap;
+        }
+
+        .item {
+            display: flex;
+            flex-grow: 0;
+            padding: 1.5rem 1.2rem;
+            align-items: flex-start;
+        }
+
+        img {
+            position: relative;
+            width: 6rem;
+            height: 6rem;
+            border-radius: 1rem;
+            margin-right: 2%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .content {
+            color: #8a9aa9;
+            width: 12rem;
+            max-width: 12rem;
+            letter-spacing: normal;
+            text-align: left;
+            margin-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .name {
+            font-weight: 600;
+            color: #2e3135;
+            font-size: 1.4rem;
+        }
+
+        .description {
+            overflow: hidden;
+            line-height: 20px;
+            height: 20px;
+        }
+
+        .not-followed {
+            color: #66c43a;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="topic-list">
+        <div class="item" th:each="topic:${topics}">
+            <img th:src="${topic.topicIcon}"/>
+            <div class="content">
+                <div class="name" th:text="${topic.topicName}"></div>
+                <div class="description" th:text="${topic.description}"></div>
+                <span class="tag">
+                    <span th:text="${topic.followsCount}"></span>关注
+                    <span th:text="${topic.msgCount}"></span>沸点
+                </span>
+                <div class="followed" th:if="${topic.followed}">已关注</div>
+                <div class="not-followed" th:unless="${topic.followed}">未关注</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
