@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1851.spring.mybatis.mapper.ClazzMapper">
+    <resultMap id="clazzMap" type="Clazz">
+        <id column="clazz_id" property="clazzId"/>
+        <result column="clazz_name" property="clazzName"/>
+        <collection property="students" ofType="Student">
+            <id column="student_id" property="studentId"/>
+            <result column="student_name" property="studentName"/>
+            <result column="hometown" property="hometown"/>
+            <result column="birthday" property="birthday"/>
+        </collection>
+    </resultMap>
+
+    <select id="getClazzOneToMany" parameterType="int" resultMap="clazzMap">
+        SELECT c.clazz_id, c.clazz_name, s.student_id, s.student_name, s.hometown, s.birthday
+        FROM t_clazz c,
+             t_student s
+        WHERE c.clazz_id = #{clazzId}
+          AND c.clazz_id = s.clazz_id
+    </select>
+
+    <select id="getClazzStudent" parameterType="int" resultType="com.soft1851.spring.mybatis.entity.ClazzVo">
+        SELECT c.*, s.*
+        FROM t_clazz c,
+             t_student s
+        WHERE c.clazz_id = s.clazz_id
+          AND c.clazz_id = #{clazzId}
+    </select>
+</mapper>
