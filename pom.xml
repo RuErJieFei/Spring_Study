@@ -17,6 +17,8 @@
         <module>web</module>
         <module>annotation_web</module>
         <module>mybatis_xml</module>
+        <module>mybatis_annotation</module>
+        <module>hibernate_xml</module>
     </modules>
 
     <properties>
@@ -35,6 +37,7 @@
         <fastjson.version>1.2.66</fastjson.version>
         <mybatis.version>3.5.4</mybatis.version>
         <spring-mybatis.version>2.0.4</spring-mybatis.version>
+        <hibernate-version>5.4.13.Final</hibernate-version>
     </properties>
 
     <dependencies>
@@ -198,6 +201,19 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Hibernate-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <!--SpringORM模块-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
